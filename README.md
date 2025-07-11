@@ -1,2 +1,7 @@
-# goliath-rewritten
-The original Goliath was coded my Zilla/Milliavent, but kinda unusable. Heres a re-write of Goliath.
+# 💥 Goliath, a fairly simple, no-bs discord nuker.
+> **You can use it for research purpose or just use it.**
+> **If you want to contribute, sure, go over !**
+
+# 🧾 TODO
+- Add massban.
+- More guild logging.
