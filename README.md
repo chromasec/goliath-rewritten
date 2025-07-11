@@ -3,5 +3,5 @@
 > **If you want to contribute, sure, go over !**
 
 # 🧾 TODO
-- Add massban.
-- More guild logging.
+- [ ] Add massban.
+- [ ] More guild logging.
