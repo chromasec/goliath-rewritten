@@ -1,3 +1,4 @@
+# this has ugly wais to do stuff.
 import aiohttp
 import asyncio
 import random
@@ -97,7 +98,7 @@ class ban():
             await ban().thread()
     
     async def thread(self):
-        print('\n [>] Banning...\n')
+        print('Banning...')
         txt = open('Core/botscrape.txt')
         for member in txt:
             threading.Thread(target=ban.mass, args=(self.guild, member,)).start()
