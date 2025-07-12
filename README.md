@@ -6,5 +6,5 @@
 
 ## 🧾 TODO
 - [X] Add massban.
--      [ ] Use the bulk.ban API enpoint instead of normal massbanning
+- [ ] Use the bulk.ban API enpoint instead of normal massbanning
 - [ ] More guild logging.
