@@ -1,4 +1,3 @@
-# the code here is kinda ugly and scary hope someone will fix it even if no one will ever come
 import aiohttp
 import asyncio
 import random
