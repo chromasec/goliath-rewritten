@@ -24,12 +24,27 @@ def log(m,c=Colors.red):print(Colorate.Color(c,m,True))
 
 @GOLIATH.event
 async def on_ready():
-    b=Colorate.Horizontal(Colors.purple_to_blue,Center.XCenter("\n\n        ***  GOLIATH BOT ONLINE  ***\n"))
-    s=Colorate.Horizontal(Colors.cyan_to_green,"-"*60)
-    i=f"\n[ USERNAME ]  {GOLIATH.user.name}\n[ USER ID  ]  {GOLIATH.user.id}\n[ INVITE   ]  https://discord.com/oauth2/authorize?client_id={GOLIATH.user.id}&scope=bot&permissions=8\n[ SERVERS  ]  {len(GOLIATH.guilds)}\n[ AUTHOR   ]  GOLIATH\n"
-    ic=Colorate.Vertical(Colors.green_to_yellow,i,1)
-    print("\n\n"+b+s+ic+s+"\n")
-    log("Bot is ready and running!",Colors.green)
+    Banner = '''
+═══════════════════════════════════════════════════════════════════════════════
+  ▄▄█▀▀▀█▄█  ▄▄█▀▀██▄ ▀████▀    ▀████▀     ██     ███▀▀██▀▀███████▀  ▀████▀▀
+▄██▀     ▀█▄██▀    ▀██▄ ██        ██      ▄██▄    █▀   ██   ▀█ ██      ██   
+██▀       ▀██▀      ▀██ ██        ██     ▄█▀██▄        ██      ██      ██   
+██         ██        ██ ██        ██    ▄█  ▀██        ██      ██████████   
+██▄    ▀█████▄      ▄██ ██     ▄  ██    ████████       ██      ██      ██   
+▀██▄     ██▀██▄    ▄██▀ ██    ▄█  ██   █▀      ██      ██      ██      ██   
+  ▀▀███████  ▀▀████▀▀ ███████████ ███▄███▄   ▄████▄  ▄████▄  ▄████▄  ▄████▄▄
+═══════════════════════════════════════════════════════════════════════════════
+'''
+    bot_info = f'''
+[+] Username: {GOLIATH.user.name}
+[+] User ID: {GOLIATH.user.id}
+[+] Scope: https://discord.com/oauth2/authorize?client_id={GOLIATH.user.id}&scope=bot&permissions=8
+[+] Guilds: {len(GOLIATH.guilds)}
+[+] Author : Lambdaist & Aethernus
+'''
+
+    print(Colorate.Color(Colors.red, Banner, True))
+    print(Colorate.Color(Colors.red, bot_info, True))
 
 @GOLIATH.command()
 async def nuke(ctx):
